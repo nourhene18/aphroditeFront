@@ -1,0 +1,13 @@
+.p-card {
+    margin: 20px auto;
+  }
+  
+  .p-d-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .p-mt-2 {
+    margin-top: 1rem;
+  }
+  

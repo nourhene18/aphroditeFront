@@ -1,0 +1,14 @@
+<p-card header="Informations du Site" [style]="{'max-width': '600px'}">
+    <div class="p-d-flex p-jc-between">
+      <div><strong>Auteur :</strong> {{ siteInfo.author }}</div>
+      <div><strong>Date de création :</strong> {{ siteInfo.creationDate }}</div>
+    </div>
+    <div class="p-mt-2">
+      <p><strong>Description :</strong> {{ siteInfo.description }}</p>
+      <p><strong>Version :</strong> {{ siteInfo.version }}</p>
+    </div>
+    <p-footer>
+      <button pButton icon="pi pi-arrow-left" label="Retour" (click)="goBack()"></button>
+        </p-footer>
+  </p-card>
+  

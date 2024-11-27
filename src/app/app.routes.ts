@@ -9,6 +9,7 @@ import { UnauthorizedComponent } from './admin/login/unauthorized.component';
 import { AppTopBarNotAuthComponent } from './layout/topbar-not-auth';
 import { AjouterCategoryComponent } from './categorie/ajouter-category/ajouter-category.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { InfosComponent } from './infos/infos.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -16,7 +17,8 @@ export const routes: Routes = [
     component: AppTopBarNotAuthComponent,
     children:[
       { path: '', component: ProductListComponent},
-      {path: 'products/:id', component:ProductDetailComponent}
+      {path: 'products/:id', component:ProductDetailComponent},
+      {path:'infos',component:InfosComponent}
       
     ]
     
