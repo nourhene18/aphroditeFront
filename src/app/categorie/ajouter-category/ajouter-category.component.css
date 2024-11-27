@@ -1,0 +1,29 @@
+/* Appliquer un bord arrondi et un ombre portée à la carte */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Agrandir les champs d'entrée pour un meilleur rendu */
+  .p-inputtext-lg {
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+  
+  /* Ajouter un padding au formulaire pour plus d'espace */
+  .formgrid {
+    gap: 20px;
+  }
+  
+  /* Espacement du bouton pour l'aligner avec le reste */
+  .p-button {
+    padding: 10px 20px;
+  }
+  
+  /* Améliorer l'apparence du label pour qu'il soit plus clair */
+  label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  

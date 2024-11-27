@@ -1,0 +1,10 @@
+<ul style="list-style: none;">
+    <li *ngFor="let item of model" class="cursor-pointer">
+      <a [routerLink]="item.routerLink" class="p-d-flex p-ai-center p-p-2">
+        <i [class]="item.icon"></i>
+        <span class="p-ml-2">{{ item.label }}</span>
+      </a>
+     
+    </li>
+  </ul>
+  

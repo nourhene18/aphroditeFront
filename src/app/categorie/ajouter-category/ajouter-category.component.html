@@ -1,0 +1,48 @@
+<div class="col-12 flex justify-content-center">
+  
+  <div class="card p-shadow-4 p-p-3" style="max-width: 600px; width: 100%;">
+    <span class="text-900 text-2xl font-bold mb-4 block text-center">Ajouter Catégorie</span>
+    
+    <div class="grid p-fluid">
+      <div class="field col-12">
+        <label for="nomCategorie">Nom catégorie</label>
+        <input
+          pInputText
+          id="nomCategorie"
+          type="text"
+          [(ngModel)]="nomCategorie"
+          placeholder="Nom de la catégorie"
+          [ngClass]="{'p-invalid': isNomCategorieInvalid()}"
+          class="p-inputtext-md"
+        />
+      </div>
+
+      <div class="field col-12">
+        <label for="description">Description</label>
+        <input
+          pInputText
+          id="description"
+          type="text"
+          [(ngModel)]="description"
+          placeholder="Description"
+          class="p-inputtext-md"
+        />
+      </div>
+     
+      <div class="col-12">
+        <div class="flex justify-content-center">
+          <button
+            type="button"
+            class="p-button p-component p-button-rounded p-button-success"
+            (click)="createCategory()"
+            pButton
+            label="Ajouter"
+            icon="pi pi-plus"
+            [disabled]="isNomCategorieInvalid()"
+            style="width: auto; padding: 0.75em 1.5em;"
+          >Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

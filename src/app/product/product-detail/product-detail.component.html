@@ -1,0 +1,62 @@
+<div class="product-detail-container">
+
+  <div class="product-details">
+    <p-card *ngIf="product; else loading" header="{{ product.name }}" subheader="{{ product.categorie?.nomCategorie }}" [style]="{ width: '360px' }">
+      <ng-template pTemplate="header">
+        <img src="{{ product.photoUrl }}" alt="{{ product.name }}" class="product-image" />
+      </ng-template>
+      <p>
+        <strong>Marque:</strong> {{ product.marque }}
+      </p>
+      <p>
+        <strong>Description:</strong> {{ product.description }}
+      </p>
+      <p>
+        <strong>Price:</strong> {{ product.prix }} TND
+      </p>
+      <p>
+        <strong>Status:</strong> {{ product.disponible ? 'Available' : 'Out of stock' }}
+      </p>
+      <p>
+        <strong>Date Ajout:</strong> {{ product.dateAjout }}
+      </p>
+      <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+          <p-button label="Cancel" severity="secondary" class="w-full" styleClass="w-full"></p-button>
+          <p-button label="Buy Now" [disabled]="product.disponible == false" class="w-full" styleClass="w-full"></p-button>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+
+  
+  <div class="product-comments">
+    <p-card>
+      <div>
+        <strong>Commentaires</strong>
+        <div class="add-comment">
+          <input
+            type="text"
+            placeholder="Votre nom"
+            [(ngModel)]="newComment.nomUtilisateur"
+          />
+          <textarea
+            rows="3"
+            placeholder="Votre commentaire"
+            [(ngModel)]="newComment.message"
+          ></textarea>
+          <button (click)="postComment()">Poster</button>
+        </div>
+        <ul>
+          <li *ngFor="let comment of commentaires">
+            <strong>{{ comment.nomUtilisateur }}</strong> : {{ comment.message }}
+          </li>
+        </ul>
+      </div>
+    </p-card>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading product details...</p>
+</ng-template>

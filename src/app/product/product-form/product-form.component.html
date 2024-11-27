@@ -1,0 +1,103 @@
+<div class="product-form-container surface-card p-4 border-round shadow-2">
+  <h2 class="text-primary font-bold text-xl mb-4">
+    {{ selectedProduct ? 'Modifier le produit' : 'Ajouter un produit' }}
+  </h2>
+  <form (ngSubmit)="saveProduct()" class="grid formgrid gap-4">
+    <div class="col-12 md:col-6">
+    
+      <div class="mb-4">
+        <label for="productName" class="font-medium">Nom du produit :</label>
+        <input id="productName" type="text" pInputText [(ngModel)]="product.name" name="name" class="w-full" required />
+      </div>
+
+      <div class="mb-4">
+        <label for="photoUrl" class="font-medium">URL de la photo :</label>
+        <input id="photoUrl" type="text" pInputText [(ngModel)]="product.photoUrl" name="photoUrl" class="w-full" required />
+      </div>
+
+      <div class="mb-4">
+        <label for="description" class="font-medium">Description :</label>
+        <textarea id="description" pInputTextarea [(ngModel)]="product.description" name="description" rows="3" class="w-full"></textarea>
+      </div>
+
+      <div class="mb-4">
+        <label for="price" class="font-medium">Prix :</label>
+        <p-inputNumber id="price" [(ngModel)]="product.prix" name="prix" mode="currency" currency="TND" class="w-full" required></p-inputNumber>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6">
+    
+      <div class="mb-4">
+        <label for="marque" class="font-medium">Marque :</label>
+        <input id="marque" type="text" pInputText [(ngModel)]="product.marque" name="marque" class="w-full" required />
+      </div>
+
+      <div class="mb-4">
+        <label for="category" class="font-medium">Catégorie :</label>
+        <select
+          id="category"
+          [(ngModel)]="product.categorie"
+          name="categorie"
+          class="w-full"
+          required
+        >
+          <option *ngFor="let category of categories" [ngValue]="category">
+            {{ category.nomCategorie }}
+          </option>
+        </select>
+      </div>
+
+      <div class="mb-4 flex align-items-center">
+        <p-checkbox
+          id="disponible"
+          [(ngModel)]="product.disponible"
+          name="disponible"
+          binary="true"
+          class="mr-2"
+        ></p-checkbox>
+        <label for="disponible" class="font-medium">Disponible</label>
+      </div>
+
+      <div class="col-12 flex justify-content-end">
+        <button type="submit" pButton label="Sauvegarder" icon="pi pi-save" class="p-button-success"></button>
+      </div>
+    </div>
+  </form>
+
+  <div class="search-container mt-5">
+    <label class="font-medium mb-2">Rechercher :</label>
+    <input
+      id="searchTerm"
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="filterProducts()"
+      placeholder="Rechercher par nom"
+      class="w-full"
+    />
+    <input
+      id="searchTermMarque"
+      type="text"
+      [(ngModel)]="searchTermMarque"
+      (input)="filterMarqueProducts()"
+      placeholder="Rechercher par marque"
+      class="w-full"
+    />
+  </div>
+
+  <div class="product-list mt-5">
+    <p-listbox [options]="filteredProducts" optionLabel="name" [style]="{ width: '100%' }">
+      <ng-template let-product pTemplate="item">
+        <div class="flex justify-content-between align-items-center">
+          <span>
+            <b>{{ product.name }}</b> - {{ product.marque }} (<span>{{ product.prix }} TND</span>)
+          </span>
+          <div>
+            <button pButton icon="pi pi-pencil" class="p-button-text p-button-primary mr-2" (click)="selectProduct(product)"></button>
+            <button pButton icon="pi pi-trash" class="p-button-text p-button-danger" (click)="confirmDeleteProduct(product.id)"></button>
+          </div>
+        </div>
+      </ng-template>
+    </p-listbox>
+  </div>
+</div>

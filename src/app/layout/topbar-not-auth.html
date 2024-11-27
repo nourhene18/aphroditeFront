@@ -1,0 +1,17 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="'/products'">
+        <img src="layout/images/A.png" alt="Logo" height="20" class="mr-2"/>
+    <span class="font-medium ml-2">Aphrodite</span>
+    </a>
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <button class="p-link layout-topbar-button" [routerLink]="'/login'">
+            <i class="pi pi-user"></i>
+            <span>Profile</span>
+        </button>
+    </div>
+</div>
+<div class="layout-main-container">
+    <div class="layout-main">
+        <router-outlet></router-outlet>
+    </div>
+</div>
